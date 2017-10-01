@@ -1,6 +1,9 @@
 FROM ubuntu:16.04
 LABEL maintainer="ymajik ymajik@gmail.com"
 
+ARG BUILD_DATE
+ARG VCS_REF
+
 ENV PUPPET_SERVER_VERSION="5.0.0" \
     DUMB_INIT_VERSION="1.2.0" \
     UBUNTU_CODENAME="xenial" \
@@ -12,11 +15,11 @@ ENV PUPPET_SERVER_VERSION="5.0.0" \
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
       org.label-schema.name="Puppet Server (No PuppetDB)" \
-      org.label-schema.license="Apache-2.0" \
+      org.label-schema.license="MIT" \
       org.label-schema.version=$PUPPET_SERVER_VERSION \
-      org.label-schema.vcs-url="https://github.com/puppetlabs/puppet-in-docker" \
-      org.label-schema.vcs-ref="bbce49f3fab8c10b6f60812564d697b2f0bd5613" \
-      org.label-schema.build-date="2017-06-30T14:18:28Z" \
+      org.label-schema.vcs-url="https://github.com/ymajik/docker-puppetserver-standalone" \
+      org.label-schema.vcs-ref="${VCS_REF}" \
+      org.label-schema.build-date="${BUILD_DATE}" \
       org.label-schema.schema-version="1.0" \
       com.puppet.dockerfile="/Dockerfile"
 
