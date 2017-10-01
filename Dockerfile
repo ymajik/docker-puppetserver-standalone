@@ -13,7 +13,7 @@ ENV PUPPET_SERVER_VERSION="5.0.0" \
     TZ="Europe/Brussels"
 
 LABEL org.label-schema.vendor="Puppet" \
-      org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
+      org.label-schema.url="https://github.com/ymajik/docker-puppetserver-standalone" \
       org.label-schema.name="Puppet Server (No PuppetDB)" \
       org.label-schema.license="MIT" \
       org.label-schema.version=$PUPPET_SERVER_VERSION \
