@@ -1,6 +1,6 @@
 # Docker puppetserver standalone
 
-[![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/ymajik/puppetserver-standalone/builds/)
+[![Docker Automated build](https://img.shields.io/docker/automated/ymajik/puppetserver-standalone.svg)](https://hub.docker.com/r/ymajik/puppetserver-standalone/builds/)
 [![Build Status](https://travis-ci.org/ymajik/docker-puppetserver-standalone.svg?branch=master)](https://travis-ci.org/ymajik/docker-puppetserver-standalone)
 
 Docker image to run a standalone puppetserver, based on the https://github.com/puppetlabs/puppet-in-docker project,
