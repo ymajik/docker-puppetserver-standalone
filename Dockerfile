@@ -1,12 +1,12 @@
-FROM ubuntu:16.04
+FROM debian:stretch-slim
 LABEL maintainer="ymajik ymajik@gmail.com"
 
 ARG BUILD_DATE
 ARG VCS_REF
 
-ENV PUPPET_SERVER_VERSION="5.0.0" \
-    DUMB_INIT_VERSION="1.2.0" \
-    UBUNTU_CODENAME="xenial" \
+ENV PUPPET_SERVER_VERSION="5.1.4" \
+    DUMB_INIT_VERSION="1.2.1" \
+    DEBIAN_CODENAME="stretch" \
     PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" \
     PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH \
     PUPPET_HEALTHCHECK_ENVIRONMENT="production" \
@@ -24,14 +24,14 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 RUN apt-get update && \
-    apt-get install -y wget=1.17.1-1ubuntu1 tzdata && \
-    wget https://apt.puppetlabs.com/puppet5-release-"$UBUNTU_CODENAME".deb && \
+    apt-get install -y --no-install-recommends wget=1.18-5+deb9u1 tzdata=2017c-0+deb9u1 ca-certificates openjdk-8-jdk ca-certificates-java stretch-backports && \
+    wget https://apt.puppetlabs.com/puppet5-release-"$DEBIAN_CODENAME".deb && \
     wget https://github.com/Yelp/dumb-init/releases/download/v"$DUMB_INIT_VERSION"/dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
-    dpkg -i puppet5-release-"$UBUNTU_CODENAME".deb && \
+    dpkg -i puppet5-release-"$DEBIAN_CODENAME".deb && \
     dpkg -i dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
-    rm puppet5-release-"$UBUNTU_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
+    rm puppet5-release-"$DEBIAN_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     apt-get update && \
-    apt-get install --no-install-recommends -y puppetserver="$PUPPET_SERVER_VERSION"-1puppetlabs1 && \
+    apt-get install --no-install-recommends -y puppetserver="$PUPPET_SERVER_VERSION"-1"$DEBIAN_CODENAME" && \
     gem install --no-rdoc --no-ri r10k && \
     rm /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
