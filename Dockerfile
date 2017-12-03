@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:stretch
 LABEL maintainer="ymajik ymajik@gmail.com"
 
 ARG BUILD_DATE
@@ -24,7 +24,7 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends wget=1.18-5+deb9u1 tzdata=2017c-0+deb9u1 ca-certificates openjdk-8-jdk ca-certificates-java stretch-backports && \
+    apt-get install -y --no-install-recommends wget=1.18-5+deb9u1 tzdata=2017c-0+deb9u1 ca-certificates=20161130+nmu1 openjdk-8-jdk=8u151-b12-1~deb9u1 ca-certificates-java=20170531+nmu1 && \
     wget https://apt.puppetlabs.com/puppet5-release-"$DEBIAN_CODENAME".deb && \
     wget https://github.com/Yelp/dumb-init/releases/download/v"$DUMB_INIT_VERSION"/dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     dpkg -i puppet5-release-"$DEBIAN_CODENAME".deb && \
