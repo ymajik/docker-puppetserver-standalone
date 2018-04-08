@@ -4,7 +4,7 @@ LABEL maintainer="ymajik ymajik@gmail.com"
 ARG BUILD_DATE
 ARG VCS_REF
 
-ENV PUPPET_SERVER_VERSION="5.1.0" \
+ENV PUPPET_SERVER_VERSION="5.3.0" \
     DUMB_INIT_VERSION="1.2.1" \
     UBUNTU_CODENAME="xenial" \
     PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" \
@@ -31,7 +31,7 @@ RUN apt-get update && \
     dpkg -i dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     rm puppet5-release-"$UBUNTU_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     apt-get update && \
-    apt-get install --no-install-recommends -y puppetserver="$PUPPET_SERVER_VERSION"-1puppetlabs1 && \
+    apt-get install --no-install-recommends -y puppetserver="$PUPPET_SERVER_VERSION"-1"$UBUNTU_CODENAME" && \
     gem install --no-rdoc --no-ri r10k && \
     rm /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
