@@ -4,8 +4,8 @@ LABEL maintainer="ymajik ymajik@gmail.com"
 ARG BUILD_DATE
 ARG VCS_REF
 
-ENV PUPPET_SERVER_VERSION="5.0.0" \
-    DUMB_INIT_VERSION="1.2.0" \
+ENV PUPPET_SERVER_VERSION="5.1.0" \
+    DUMB_INIT_VERSION="1.2.1" \
     UBUNTU_CODENAME="xenial" \
     PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" \
     PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH \
